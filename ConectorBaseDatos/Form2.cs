@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace ConectorBaseDatos
 {
@@ -137,6 +138,43 @@ namespace ConectorBaseDatos
             {
                 button4.Enabled = false;
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            int numMatches = 0;
+            label13.Text = "# Coinidencias:";
+            Stack stack = new Stack();
+            String[] Databases = listBox1.Items.OfType<string>().ToArray();
+            String[] Files = listBox2.Items.OfType<string>().ToArray();
+            foreach (String Database in Databases)
+            {
+                foreach (String File in Files)
+                {
+                    if (File.Contains(Database))
+                    {
+                        stack.Push(File);
+                    }
+                }
+            }
+            foreach (String item in stack)
+            {
+                listBox3 .Items.Add(item);
+
+            }
+            numMatches = listBox3.Items.Count;
+
+            
+            string sPath = textBox3.Text+@"\save.txt";
+
+            System.IO.StreamWriter SaveFile = new System.IO.StreamWriter(sPath);
+            foreach (var item in listBox3.Items)
+            {
+                SaveFile.WriteLine(item.ToString()) ;
+            }
+            SaveFile.Close();
+            label13.Text += " " + numMatches;
+
         }
     }
 }

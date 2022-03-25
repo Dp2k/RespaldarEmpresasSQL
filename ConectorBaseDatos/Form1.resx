@@ -505,10 +505,16 @@
     <value>17, 17</value>
   </metadata>
   <data name="respaldarBasesDeDatosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>206, 22</value>
+    <value>217, 22</value>
   </data>
   <data name="respaldarBasesDeDatosToolStripMenuItem.Text" xml:space="preserve">
     <value>Respaldar Bases de Datos</value>
+  </data>
+  <data name="attachListaBasesDeDatosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>217, 22</value>
+  </data>
+  <data name="attachListaBasesDeDatosToolStripMenuItem.Text" xml:space="preserve">
+    <value>Attach Lista Bases de Datos</value>
   </data>
   <data name="archivoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>60, 20</value>
@@ -1700,6 +1706,12 @@
     <value>respaldarBasesDeDatosToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;respaldarBasesDeDatosToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;attachListaBasesDeDatosToolStripMenuItem.Name" xml:space="preserve">
+    <value>attachListaBasesDeDatosToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;attachListaBasesDeDatosToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

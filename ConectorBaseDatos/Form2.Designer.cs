@@ -54,6 +54,8 @@ namespace ConectorBaseDatos
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.label12 = new System.Windows.Forms.Label();
+            this.listBox3 = new System.Windows.Forms.ListBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBox1
@@ -192,6 +194,7 @@ namespace ConectorBaseDatos
             this.button4.TabIndex = 16;
             this.button4.Text = "Inicar Respaldo BDs";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // label8
             // 
@@ -271,12 +274,31 @@ namespace ConectorBaseDatos
             this.label12.TabIndex = 25;
             this.label12.Text = "0%";
             // 
+            // listBox3
+            // 
+            this.listBox3.FormattingEnabled = true;
+            this.listBox3.Location = new System.Drawing.Point(118, 425);
+            this.listBox3.Name = "listBox3";
+            this.listBox3.Size = new System.Drawing.Size(514, 82);
+            this.listBox3.TabIndex = 26;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(530, 510);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(86, 13);
+            this.label13.TabIndex = 27;
+            this.label13.Text = "# Coincidencias:";
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(670, 438);
+            this.ClientSize = new System.Drawing.Size(670, 546);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.listBox3);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.comboBox1);
@@ -338,5 +360,7 @@ namespace ConectorBaseDatos
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ListBox listBox3;
+        private System.Windows.Forms.Label label13;
     }
 }

@@ -48,6 +48,7 @@ namespace ConectorBaseDatos
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.respaldarBasesDeDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.attachListaBasesDeDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,6 +57,7 @@ namespace ConectorBaseDatos
             this.comboBox1.FormattingEnabled = true;
             resources.ApplyResources(this.comboBox1, "comboBox1");
             this.comboBox1.Name = "comboBox1";
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             this.comboBox1.TextChanged += new System.EventHandler(this.comboBox1_TextChanged);
             // 
             // comboBox2
@@ -87,16 +89,19 @@ namespace ConectorBaseDatos
             // 
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -107,12 +112,14 @@ namespace ConectorBaseDatos
             // 
             resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // checkBox1
             // 
             resources.ApplyResources(this.checkBox1, "checkBox1");
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // label6
             // 
@@ -155,7 +162,8 @@ namespace ConectorBaseDatos
             // archivoToolStripMenuItem
             // 
             this.archivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.respaldarBasesDeDatosToolStripMenuItem});
+            this.respaldarBasesDeDatosToolStripMenuItem,
+            this.attachListaBasesDeDatosToolStripMenuItem});
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
             resources.ApplyResources(this.archivoToolStripMenuItem, "archivoToolStripMenuItem");
             this.archivoToolStripMenuItem.Click += new System.EventHandler(this.archivoToolStripMenuItem_Click);
@@ -165,6 +173,12 @@ namespace ConectorBaseDatos
             this.respaldarBasesDeDatosToolStripMenuItem.Name = "respaldarBasesDeDatosToolStripMenuItem";
             resources.ApplyResources(this.respaldarBasesDeDatosToolStripMenuItem, "respaldarBasesDeDatosToolStripMenuItem");
             this.respaldarBasesDeDatosToolStripMenuItem.Click += new System.EventHandler(this.respaldarBasesDeDatosToolStripMenuItem_Click);
+            // 
+            // attachListaBasesDeDatosToolStripMenuItem
+            // 
+            this.attachListaBasesDeDatosToolStripMenuItem.Name = "attachListaBasesDeDatosToolStripMenuItem";
+            resources.ApplyResources(this.attachListaBasesDeDatosToolStripMenuItem, "attachListaBasesDeDatosToolStripMenuItem");
+            this.attachListaBasesDeDatosToolStripMenuItem.Click += new System.EventHandler(this.attachListaBasesDeDatosToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -217,6 +231,7 @@ namespace ConectorBaseDatos
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem archivoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem respaldarBasesDeDatosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem attachListaBasesDeDatosToolStripMenuItem;
     }
 }
 

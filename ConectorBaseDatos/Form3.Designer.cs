@@ -54,6 +54,7 @@ namespace ConectorBaseDatos
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.button5 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label11
@@ -117,6 +118,7 @@ namespace ConectorBaseDatos
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(514, 20);
             this.textBox1.TabIndex = 22;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label9
             // 
@@ -260,6 +262,7 @@ namespace ConectorBaseDatos
             this.textBox4.Size = new System.Drawing.Size(514, 20);
             this.textBox4.TabIndex = 40;
             this.textBox4.UseSystemPasswordChar = true;
+            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // textBox5
             // 
@@ -267,6 +270,7 @@ namespace ConectorBaseDatos
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(514, 20);
             this.textBox5.TabIndex = 39;
+            this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
             // comboBox1
             // 
@@ -276,12 +280,24 @@ namespace ConectorBaseDatos
             this.comboBox1.Size = new System.Drawing.Size(514, 21);
             this.comboBox1.TabIndex = 38;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox1.TextChanged += new System.EventHandler(this.comboBox1_TextChanged);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(406, 394);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 46;
+            this.button5.Text = "button5";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(695, 502);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label8);
@@ -308,6 +324,7 @@ namespace ConectorBaseDatos
             this.Controls.Add(this.textBox1);
             this.Name = "Form3";
             this.Text = "Form3";
+            this.Load += new System.EventHandler(this.Form3_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -340,5 +357,6 @@ namespace ConectorBaseDatos
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button button5;
     }
 }

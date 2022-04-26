@@ -46,7 +46,7 @@ namespace ConectorBaseDatos{
             Microsoft.Office.Interop.Excel.Application xlApp = new Microsoft.Office.Interop.Excel.Application();
 
             if (xlApp == null){
-                MessageBox.Show("Excel no esta instalado en la maquina");
+                MessageBox.Show("Excel no esta instalado en la maquina, no se puede generar el reporte.");
                 return;
             }
 

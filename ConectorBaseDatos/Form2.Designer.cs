@@ -281,6 +281,7 @@ namespace ConectorBaseDatos
             this.listBox3.Name = "listBox3";
             this.listBox3.Size = new System.Drawing.Size(514, 82);
             this.listBox3.TabIndex = 26;
+            this.listBox3.SelectedIndexChanged += new System.EventHandler(this.listBox3_SelectedIndexChanged);
             // 
             // label13
             // 

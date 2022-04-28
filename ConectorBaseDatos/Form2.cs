@@ -31,10 +31,11 @@ namespace ConectorBaseDatos
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
+{
             listBox1.Items.Clear();
             label11.Text = "# BD's:";
-            openFileDialog1.InitialDirectory = "C:\\";
+            //openFileDialog1.InitialDirectory = "C:\\";
+            openFileDialog1.InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             // filtro de archivos.
             openFileDialog1.Filter = "Archivos de texto (*.txt)|*.txt";
             int numDBs = 0;
@@ -48,14 +49,13 @@ namespace ConectorBaseDatos
                     string line;
                     System.IO.StreamReader file = new System.IO.StreamReader(@str_RutaArchivo);
                     textBox1.Text = str_RutaArchivo;
-                    while ((line = file.ReadLine()) != null)
-                    {
+                    while ((line = file.ReadLine()) != null){
                         listBox1.Items.Add(line);
                         counter++;
                         numDBs++;
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     throw;
                 }
@@ -143,6 +143,26 @@ namespace ConectorBaseDatos
 
         private void button4_Click(object sender, EventArgs e)
         {
+            if (File.Exists(textBox1.Text)){
+                if (Directory.Exists(textBox2.Text)){
+                    if (Directory.Exists(textBox3.Text)){
+
+                        MessageBox.Show("TODO CHIDO");
+
+
+                    }
+                    else {
+                        MessageBox.Show("El direcctorio "+textBox3.Text+" no existe seleccione un directorio existente.");
+                    }
+                }else {
+                    MessageBox.Show("El direcctorio " + textBox2.Text + " no existe seleccione un directorio existente.");
+                }
+            }else {
+                MessageBox.Show("El archivo " + textBox1.Text + " no existe seleccione un archivo existente.");
+            }
+
+
+            /*
             int numMatches = 0;
             label13.Text = "# Coinidencias:";
             Stack stack = new Stack();
@@ -175,6 +195,11 @@ namespace ConectorBaseDatos
             }
             SaveFile.Close();
             label13.Text += " " + numMatches;
+            */
+        }
+
+        private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }

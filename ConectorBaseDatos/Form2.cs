@@ -34,33 +34,29 @@ namespace ConectorBaseDatos
 {
             listBox1.Items.Clear();
             label11.Text = "# BD's:";
-            //openFileDialog1.InitialDirectory = "C:\\";
+            int numDBs = 0;
+            // Directorio inicial Escritorio
             openFileDialog1.InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             // filtro de archivos.
             openFileDialog1.Filter = "Archivos de texto (*.txt)|*.txt";
-            int numDBs = 0;
+            
             // codigo para abrir el cuadro de dialogo
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK){
+                try{
                     string str_RutaArchivo = openFileDialog1.FileName;
-                    int counter = 0;
                     string line;
                     System.IO.StreamReader file = new System.IO.StreamReader(@str_RutaArchivo);
                     textBox1.Text = str_RutaArchivo;
                     while ((line = file.ReadLine()) != null){
                         listBox1.Items.Add(line);
-                        counter++;
                         numDBs++;
                     }
                 }
-                catch (Exception ex)
-                {
+                catch (Exception){
                     throw;
                 }
             }
-            
+          
             label11.Text += " " + numDBs;
         }
 
@@ -147,8 +143,47 @@ namespace ConectorBaseDatos
                 if (Directory.Exists(textBox2.Text)){
                     if (Directory.Exists(textBox3.Text)){
 
-                        MessageBox.Show("TODO CHIDO");
+                        label13.Text = "# Coinidencias:";
+                        Stack matches = new Stack();
+                        List<List<String>> listalistas = new List<List<string>>();
+                        String[] Databases = listBox1.Items.OfType<string>().ToArray();
+                        String[] Files = listBox2.Items.OfType<string>().ToArray();
 
+                        foreach (String Database in Databases){
+                            List<String> list = new List<string>();
+                           
+                            foreach (String File in Files){   
+                                if (File.Contains(Database)){
+                                    list.Add(File);   
+                                }
+                            }
+
+                            listalistas.Add(list);
+                        }
+
+                        string sourcePath = @textBox2.Text;
+                        string targetPath = @textBox3.Text;
+
+                        try {
+                            for (int i = 0; i < listalistas.Count; i++){
+                                for (int j = 0; j < listalistas[i].Count; j++){
+                                    listBox3.Items.Add(listalistas[i][j]);
+                                    string sourceFile = System.IO.Path.Combine(sourcePath, listalistas[i][j]);
+                                    string destFile = System.IO.Path.Combine(targetPath, listalistas[i][j]);
+                                    System.IO.File.Copy(sourceFile, destFile, true);
+                                }
+                            }
+                            MessageBox.Show("Se han respaldado los archivos correctamente en el direcctorio: "+ targetPath);
+                        }
+                        catch (Exception ex) {
+                            MessageBox.Show(ex.Message);
+                        }
+                        
+
+
+                      
+
+                        label13.Text += " " + listBox3.Items.Count;
 
                     }
                     else {
@@ -161,30 +196,7 @@ namespace ConectorBaseDatos
                 MessageBox.Show("El archivo " + textBox1.Text + " no existe seleccione un archivo existente.");
             }
 
-
             /*
-            int numMatches = 0;
-            label13.Text = "# Coinidencias:";
-            Stack stack = new Stack();
-            String[] Databases = listBox1.Items.OfType<string>().ToArray();
-            String[] Files = listBox2.Items.OfType<string>().ToArray();
-            foreach (String Database in Databases)
-            {
-                foreach (String File in Files)
-                {
-                    if (File.Contains(Database))
-                    {
-                        stack.Push(File);
-                    }
-                }
-            }
-            foreach (String item in stack)
-            {
-                listBox3 .Items.Add(item);
-
-            }
-            numMatches = listBox3.Items.Count;
-
             
             string sPath = textBox3.Text+@"\save.txt";
 
@@ -199,6 +211,16 @@ namespace ConectorBaseDatos
         }
 
         private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
         {
 
         }

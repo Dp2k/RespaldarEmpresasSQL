@@ -52,10 +52,9 @@ namespace ConectorBaseDatos
             this.label7 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.label12 = new System.Windows.Forms.Label();
             this.listBox3 = new System.Windows.Forms.ListBox();
             this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBox1
@@ -188,9 +187,9 @@ namespace ConectorBaseDatos
             // button4
             // 
             this.button4.Enabled = false;
-            this.button4.Location = new System.Drawing.Point(544, 396);
+            this.button4.Location = new System.Drawing.Point(519, 387);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(119, 23);
+            this.button4.Size = new System.Drawing.Size(113, 23);
             this.button4.TabIndex = 16;
             this.button4.Text = "Inicar Respaldo BDs";
             this.button4.UseVisualStyleBackColor = true;
@@ -240,6 +239,7 @@ namespace ConectorBaseDatos
             this.label7.Size = new System.Drawing.Size(373, 13);
             this.label7.TabIndex = 22;
             this.label7.Text = "Por favor, seleccione el direcctorio de destino del respado de bases de datos.";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // openFileDialog1
             // 
@@ -258,26 +258,10 @@ namespace ConectorBaseDatos
             this.comboBox1.TabIndex = 23;
             this.comboBox1.TextChanged += new System.EventHandler(this.comboBox1_TextChanged);
             // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(118, 396);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(379, 23);
-            this.progressBar1.TabIndex = 24;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(503, 401);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(21, 13);
-            this.label12.TabIndex = 25;
-            this.label12.Text = "0%";
-            // 
             // listBox3
             // 
             this.listBox3.FormattingEnabled = true;
-            this.listBox3.Location = new System.Drawing.Point(118, 425);
+            this.listBox3.Location = new System.Drawing.Point(118, 430);
             this.listBox3.Name = "listBox3";
             this.listBox3.Size = new System.Drawing.Size(514, 82);
             this.listBox3.TabIndex = 26;
@@ -286,22 +270,31 @@ namespace ConectorBaseDatos
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(530, 510);
+            this.label13.Location = new System.Drawing.Point(516, 515);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(86, 13);
             this.label13.TabIndex = 27;
             this.label13.Text = "# Coincidencias:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(124, 414);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(138, 13);
+            this.label12.TabIndex = 28;
+            this.label12.Text = "Lista Archivos Respaldados";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(670, 546);
+            this.ClientSize = new System.Drawing.Size(677, 559);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.listBox3);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label11);
@@ -359,9 +352,8 @@ namespace ConectorBaseDatos
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ListBox listBox3;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
     }
 }

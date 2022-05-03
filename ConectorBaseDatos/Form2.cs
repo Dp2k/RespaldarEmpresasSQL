@@ -1,14 +1,9 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Collections;
 
 
 namespace ConectorBaseDatos
@@ -151,14 +146,20 @@ namespace ConectorBaseDatos
 
                         foreach (String Database in Databases){
                             List<String> list = new List<string>();
-                           
+                            Boolean band = false;
                             foreach (String File in Files){   
                                 if (File.Contains(Database)){
-                                    list.Add(File);   
+                                    list.Add(File);
+                                    band = true;
                                 }
                             }
-
-                            listalistas.Add(list);
+                            if (band){
+                                listalistas.Add(list);
+                            }else{
+                                list.Add("No se encontro ningun archivo de esta base de datos");
+                                listalistas.Add(list);
+                            }
+                            
                         }
 
                         string sourcePath = @textBox2.Text;
@@ -167,10 +168,12 @@ namespace ConectorBaseDatos
                         try {
                             for (int i = 0; i < listalistas.Count; i++){
                                 for (int j = 0; j < listalistas[i].Count; j++){
-                                    listBox3.Items.Add(listalistas[i][j]);
-                                    string sourceFile = System.IO.Path.Combine(sourcePath, listalistas[i][j]);
-                                    string destFile = System.IO.Path.Combine(targetPath, listalistas[i][j]);
-                                    System.IO.File.Copy(sourceFile, destFile, true);
+                                    if (listalistas[i][j] != "No se encontro ningun archivo de esta base de datos") {
+                                        listBox3.Items.Add(listalistas[i][j]);
+                                        string sourceFile = System.IO.Path.Combine(sourcePath, listalistas[i][j]);
+                                        string destFile = System.IO.Path.Combine(targetPath, listalistas[i][j]);
+                                        System.IO.File.Copy(sourceFile, destFile, true);
+                                    }
                                 }
                             }
                             MessageBox.Show("Se han respaldado los archivos correctamente en el direcctorio: "+ targetPath);
@@ -178,13 +181,30 @@ namespace ConectorBaseDatos
                         catch (Exception ex) {
                             MessageBox.Show(ex.Message);
                         }
-                        
 
+                        try {
+                            string sPath = System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\bitacora.txt";
 
-                      
+                            System.IO.StreamWriter SaveFile = new System.IO.StreamWriter(sPath);
 
+                            for (int i = 0; i < listalistas.Count; i++)
+                            {
+                                String linea = "";
+                                linea += Databases[i];
+                                for (int j = 0; j < listalistas[i].Count; j++)
+                                {
+                                    linea += " " + listalistas[i][j];
+                                }
+                                SaveFile.WriteLine(linea);
+                            }
+                            SaveFile.Close();
+                            MessageBox.Show("La bitacora de respaldo se a genrado correctamente en el directorio :"+ sPath);
+                        }
+                        catch (Exception ex) {
+
+                            MessageBox.Show(ex.Message);
+                        }
                         label13.Text += " " + listBox3.Items.Count;
-
                     }
                     else {
                         MessageBox.Show("El direcctorio "+textBox3.Text+" no existe seleccione un directorio existente.");
@@ -196,18 +216,7 @@ namespace ConectorBaseDatos
                 MessageBox.Show("El archivo " + textBox1.Text + " no existe seleccione un archivo existente.");
             }
 
-            /*
-            
-            string sPath = textBox3.Text+@"\save.txt";
-
-            System.IO.StreamWriter SaveFile = new System.IO.StreamWriter(sPath);
-            foreach (var item in listBox3.Items)
-            {
-                SaveFile.WriteLine(item.ToString()) ;
-            }
-            SaveFile.Close();
-            label13.Text += " " + numMatches;
-            */
+        
         }
 
         private void listBox3_SelectedIndexChanged(object sender, EventArgs e)

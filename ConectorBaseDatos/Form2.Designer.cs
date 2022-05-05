@@ -88,7 +88,6 @@ namespace ConectorBaseDatos
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(514, 69);
             this.listBox1.TabIndex = 3;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // listBox2
             // 
@@ -239,7 +238,7 @@ namespace ConectorBaseDatos
             this.label7.Size = new System.Drawing.Size(373, 13);
             this.label7.TabIndex = 22;
             this.label7.Text = "Por favor, seleccione el direcctorio de destino del respado de bases de datos.";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
+            
             // 
             // openFileDialog1
             // 
@@ -265,7 +264,6 @@ namespace ConectorBaseDatos
             this.listBox3.Name = "listBox3";
             this.listBox3.Size = new System.Drawing.Size(514, 82);
             this.listBox3.TabIndex = 26;
-            this.listBox3.SelectedIndexChanged += new System.EventHandler(this.listBox3_SelectedIndexChanged);
             // 
             // label13
             // 
@@ -284,7 +282,6 @@ namespace ConectorBaseDatos
             this.label12.Size = new System.Drawing.Size(138, 13);
             this.label12.TabIndex = 28;
             this.label12.Text = "Lista Archivos Respaldados";
-            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // Form2
             // 
@@ -322,7 +319,7 @@ namespace ConectorBaseDatos
             this.Name = "Form2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Respaldar BD\'s";
-            this.Load += new System.EventHandler(this.Form2_Load);
+           //his.Load += new System.EventHandler(this.Form2_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

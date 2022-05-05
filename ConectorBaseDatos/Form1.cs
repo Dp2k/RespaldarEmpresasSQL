@@ -16,18 +16,13 @@ using System.Collections;
 
 namespace ConectorBaseDatos{
     public partial class Form1 : Form{
-
         
         public Form1(){
             InitializeComponent();
             GetDataSources2();
         }
 
-        private void Form1_Load(object sender, EventArgs e) {
-
-        }
-
-       
+   
         private void GetDataSources2(){
             string ServerName = Environment.MachineName;
             RegistryView registryView = Environment.Is64BitOperatingSystem ? RegistryView.Registry64 : RegistryView.Registry32;
@@ -41,6 +36,14 @@ namespace ConectorBaseDatos{
             }
         }
 
+        private void button2_Click(object sender, EventArgs e){
+            FolderBrowserDialog FBD = new FolderBrowserDialog();
+            if (FBD.ShowDialog() == DialogResult.OK){
+                string[] files = Directory.GetFiles(FBD.SelectedPath);
+                textBox3.Text = FBD.SelectedPath;
+            }
+        }
+
 
         private void button1_Click(object sender, EventArgs e){
             Microsoft.Office.Interop.Excel.Application xlApp = new Microsoft.Office.Interop.Excel.Application();
@@ -48,7 +51,11 @@ namespace ConectorBaseDatos{
             if (xlApp == null){
                 MessageBox.Show("Excel no esta instalado en la maquina, no se puede generar el reporte.");
                 return;
+
+
             }
+
+
 
             Excel.Workbook xlWorkBook;
             Excel.Worksheet xlWorkSheet;
@@ -129,7 +136,7 @@ namespace ConectorBaseDatos{
                             xlWorkSheet.Cells[cont, 3] = dr2[0].ToString();
                             cont++;
                             dr2.Close();
-                        } catch(Exception ex){
+                        } catch(Exception){
                             xlWorkSheet.Cells[cont, 1] = nombresEmpresas.Pop();
                             xlWorkSheet.Cells[cont, 2] = db;
                             xlWorkSheet.Cells[cont, 3] = "empresa no existe";
@@ -156,49 +163,30 @@ namespace ConectorBaseDatos{
                 }
             
             
-            }
-                
-        }
-
-        private void button2_Click(object sender, EventArgs e){
-            FolderBrowserDialog FBD = new FolderBrowserDialog();
-            if (FBD.ShowDialog() == DialogResult.OK){
-                string[] files = Directory.GetFiles(FBD.SelectedPath);
-                textBox3.Text = FBD.SelectedPath;
-            }
+            } 
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e){
-            if ((textBox1.Text != "") && (textBox2.Text != "") && (textBox3.Text != "") && (comboBox1.Text != "") && (comboBox2.Text != "")) button1.Enabled = true;
-            else button1.Enabled = false; 
+            button1.Enabled = (textBox1.Text != "") && (textBox2.Text != "") && (textBox3.Text != "") && (comboBox1.Text != "") && (comboBox2.Text != "") ? true : false;
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-            if ((textBox1.Text != "") && (textBox2.Text != "") && (textBox3.Text != "") && (comboBox1.Text != "") && (comboBox2.Text != "")) button1.Enabled = true;
-            else button1.Enabled = false;
+        private void textBox2_TextChanged(object sender, EventArgs e){
+            button1.Enabled = (textBox1.Text != "") && (textBox2.Text != "") && (textBox3.Text != "") && (comboBox1.Text != "") && (comboBox2.Text != "") ? true : false;
         }
 
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-            if ((textBox1.Text != "") && (textBox2.Text != "") && (textBox3.Text != "") && (comboBox1.Text != "") && (comboBox2.Text != "")) button1.Enabled = true;
-            else button1.Enabled = false;
+        private void textBox3_TextChanged(object sender, EventArgs e){
+            button1.Enabled = (textBox1.Text != "") && (textBox2.Text != "") && (textBox3.Text != "") && (comboBox1.Text != "") && (comboBox2.Text != "") ? true : false;
         }
 
-        private void comboBox1_TextChanged(object sender, EventArgs e)
-        {
-            if ((textBox1.Text != "") && (textBox2.Text != "") && (textBox3.Text != "") && (comboBox1.Text != "") && (comboBox2.Text != "")) button1.Enabled = true;
-            else button1.Enabled = false;
+        private void comboBox1_TextChanged(object sender, EventArgs e){
+            button1.Enabled = (textBox1.Text != "") && (textBox2.Text != "") && (textBox3.Text != "") && (comboBox1.Text != "") && (comboBox2.Text != "") ? true : false;
         }
 
-        private void comboBox2_TextChanged(object sender, EventArgs e)
-        {
-            if ((textBox1.Text != "") && (textBox2.Text != "") && (textBox3.Text != "") && (comboBox1.Text != "") && (comboBox2.Text != "")) button1.Enabled = true;
-            else button1.Enabled = false;
+        private void comboBox2_TextChanged(object sender, EventArgs e){
+            button1.Enabled = (textBox1.Text != "") && (textBox2.Text != "") && (textBox3.Text != "") && (comboBox1.Text != "") && (comboBox2.Text != "") ? true : false;
         }
 
-        private void respaldarBasesDeDatosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        private void respaldarBasesDeDatosToolStripMenuItem_Click(object sender, EventArgs e){
             bool isOpen = false;
             foreach (Form f in Application.OpenForms) {
                 if (f.Text == "Form2") {
@@ -209,72 +197,35 @@ namespace ConectorBaseDatos{
             }
             if (!isOpen) {
                 Form2 f2 = new Form2();
-                
                 f2.ShowDialog();
-      
             }
         }
 
-        private void archivoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
 
-        }
 
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void attachListaBasesDeDatosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        private void attachListaBasesDeDatosToolStripMenuItem_Click(object sender, EventArgs e){
             bool isOpen = false;
-            foreach (Form f in Application.OpenForms)
-            {
-                if (f.Text == "Form3")
-                {
+            foreach (Form f in Application.OpenForms){
+                if (f.Text == "Form3") {
                     isOpen = true;
                     f.Focus();
                     break;
                 }
             }
-            if (!isOpen)
-            {
+            if (!isOpen){
                 Form3 f3 = new Form3();
-
                 f3.ShowDialog();
-
             }
-
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+        private void checkBox1_CheckedChanged(object sender, EventArgs e){
+            textBox1.Enabled = (checkBox1.CheckState == CheckState.Checked) ? false : true;
+            textBox2.Enabled = (checkBox1.CheckState == CheckState.Checked) ? false : true;
         }
 
-        private void label5_Click(object sender, EventArgs e)
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
+            textBox2.UseSystemPasswordChar = checkBox2.CheckState == CheckState.Checked ? false : true;
         }
     }
 }

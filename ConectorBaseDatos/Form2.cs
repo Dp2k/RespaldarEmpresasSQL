@@ -15,16 +15,6 @@ namespace ConectorBaseDatos
             InitializeComponent();
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form2_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
 {
             listBox1.Items.Clear();
@@ -86,58 +76,30 @@ namespace ConectorBaseDatos
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if ((textBox1.Text != "") && (textBox2.Text != "") && (textBox3.Text != "") && (comboBox1.Text != ""))
-            {
-                button4.Enabled = true;
-            }
-            else {
-                button4.Enabled = false;
-            }
-
+            button4.Enabled = ((textBox1.Text != "") && (textBox2.Text != "") && (textBox3.Text != "") && (comboBox1.Text != "")) ? true : false;
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-            if ((textBox1.Text != "") && (textBox2.Text != "") && (textBox3.Text != "") && (comboBox1.Text != ""))
-            {
-                button4.Enabled = true;
-            }
-            else
-            {
-                button4.Enabled = false;
-            }
+        private void textBox2_TextChanged(object sender, EventArgs e){
+            button4.Enabled = ((textBox1.Text != "") && (textBox2.Text != "") && (textBox3.Text != "") && (comboBox1.Text != "")) ?  true : false;
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
-            if ((textBox1.Text != "") && (textBox2.Text != "") && (textBox3.Text != "") && (comboBox1.Text != ""))
-            {
-                button4.Enabled = true;
-            }
-            else
-            {
-                button4.Enabled = false;
-            }
+            button4.Enabled = ((textBox1.Text != "") && (textBox2.Text != "") && (textBox3.Text != "") && (comboBox1.Text != "")) ? true : false;
         }
 
         private void comboBox1_TextChanged(object sender, EventArgs e)
         {
-            if ((textBox1.Text != "") && (textBox2.Text != "") && (textBox3.Text != "") && (comboBox1.Text != ""))
-            {
-                button4.Enabled = true;
-            }
-            else
-            {
-                button4.Enabled = false;
-            }
+            button4.Enabled = ((textBox1.Text != "") && (textBox2.Text != "") && (textBox3.Text != "") && (comboBox1.Text != "")) ? true : false;
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
+        private void button4_Click(object sender, EventArgs e){
+
             if (File.Exists(textBox1.Text)){
                 if (Directory.Exists(textBox2.Text)){
                     if (Directory.Exists(textBox3.Text)){
 
+                        listBox3.Items.Clear();
                         label13.Text = "# Coinidencias:";
                         Stack matches = new Stack();
                         List<List<String>> listalistas = new List<List<string>>();
@@ -181,9 +143,10 @@ namespace ConectorBaseDatos
                         catch (Exception ex) {
                             MessageBox.Show(ex.Message);
                         }
-
+                        int multiplicador = (comboBox1.Text == "BD's Normales") ? 2 : 8;
+                     
                         try {
-                            string sPath = System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\bitacora.txt";
+                            string sPath = (comboBox1.Text == "BD's Normales") ? System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\bitacoraDBsNormales.txt" : System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\bitacoraDBsADD.txt";
 
                             System.IO.StreamWriter SaveFile = new System.IO.StreamWriter(sPath);
 
@@ -197,7 +160,12 @@ namespace ConectorBaseDatos
                                 }
                                 SaveFile.WriteLine(linea);
                             }
+                            SaveFile.WriteLine("Se han respaldado " + listBox3.Items.Count +" archivos de "+ Databases.Length*multiplicador+" posibles");
+                            int faltan = Databases.Length * multiplicador-listBox3.Items.Count;
+                            SaveFile.WriteLine("Faltaron: "+faltan);
+
                             SaveFile.Close();
+                            
                             MessageBox.Show("La bitacora de respaldo se a genrado correctamente en el directorio :"+ sPath);
                         }
                         catch (Exception ex) {
@@ -215,22 +183,6 @@ namespace ConectorBaseDatos
             }else {
                 MessageBox.Show("El archivo " + textBox1.Text + " no existe seleccione un archivo existente.");
             }
-
-        
-        }
-
-        private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label12_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
 
         }
     }

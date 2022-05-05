@@ -49,6 +49,7 @@ namespace ConectorBaseDatos
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.respaldarBasesDeDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.attachListaBasesDeDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,7 +58,6 @@ namespace ConectorBaseDatos
             this.comboBox1.FormattingEnabled = true;
             resources.ApplyResources(this.comboBox1, "comboBox1");
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             this.comboBox1.TextChanged += new System.EventHandler(this.comboBox1_TextChanged);
             // 
             // comboBox2
@@ -69,7 +69,6 @@ namespace ConectorBaseDatos
             resources.GetString("comboBox2.Items1")});
             resources.ApplyResources(this.comboBox2, "comboBox2");
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             this.comboBox2.TextChanged += new System.EventHandler(this.comboBox2_TextChanged);
             // 
             // textBox1
@@ -89,19 +88,16 @@ namespace ConectorBaseDatos
             // 
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -112,7 +108,6 @@ namespace ConectorBaseDatos
             // 
             resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // checkBox1
             // 
@@ -166,7 +161,6 @@ namespace ConectorBaseDatos
             this.attachListaBasesDeDatosToolStripMenuItem});
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
             resources.ApplyResources(this.archivoToolStripMenuItem, "archivoToolStripMenuItem");
-            this.archivoToolStripMenuItem.Click += new System.EventHandler(this.archivoToolStripMenuItem_Click);
             // 
             // respaldarBasesDeDatosToolStripMenuItem
             // 
@@ -180,10 +174,19 @@ namespace ConectorBaseDatos
             resources.ApplyResources(this.attachListaBasesDeDatosToolStripMenuItem, "attachListaBasesDeDatosToolStripMenuItem");
             this.attachListaBasesDeDatosToolStripMenuItem.Click += new System.EventHandler(this.attachListaBasesDeDatosToolStripMenuItem_Click);
             // 
+            // checkBox2
+            // 
+            resources.ApplyResources(this.checkBox2, "checkBox2");
+            this.checkBox2.BackColor = System.Drawing.SystemColors.Control;
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.UseVisualStyleBackColor = false;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textBox3);
@@ -203,7 +206,6 @@ namespace ConectorBaseDatos
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -232,6 +234,7 @@ namespace ConectorBaseDatos
         private System.Windows.Forms.ToolStripMenuItem archivoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem respaldarBasesDeDatosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem attachListaBasesDeDatosToolStripMenuItem;
+        private System.Windows.Forms.CheckBox checkBox2;
     }
 }
 
